@@ -51,10 +51,18 @@ export function* handleNews() {
   // yield all([call(handleLatestNews), call(handlePopularNews)]);
 }
 
-export function* watchClickSaga() {
-  yield takeEvery(getLatestNews.type, handleNews);
+export function* watcherPopularSage() {
+  yield takeEvery(getPopularNews.type, handlePopularNews);
 }
 
+export function* watcherLatestSage() {
+  yield takeEvery(getLatestNews.type, handleLatestNews);
+}
+
+// export function* watchClickSaga() {
+//   yield takeEvery(getLatestNews.type, handleNews);
+// }
+
 export default function* rootSaga() {
-  yield watchClickSaga();
+  yield all([fork(watcherLatestSage), fork(watcherPopularSage)]);
 }

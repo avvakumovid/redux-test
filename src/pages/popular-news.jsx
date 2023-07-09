@@ -1,10 +1,18 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import News from '../components/news/News';
-const App = () => {
-  const { popularNews } = useSelector(store => store?.news || {});
-  const { popularNewsError } = useSelector(store => store?.errors || {});
+import { getPopularNews } from '../redux/slices/testSlice';
+const PopularNews = () => {
+  const popularNews = useSelector(store => store.test.popularNews);
+  const popularNewsError = useSelector(store => store.test.popularNewsError);
   const dispatch = useDispatch();
+  let isFirstRender = true;
+  useEffect(() => {
+    if (isFirstRender) {
+      dispatch(getPopularNews());
+      isFirstRender = false;
+    }
+  }, []);
 
   return (
     <div>
@@ -13,4 +21,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default PopularNews;

@@ -6,7 +6,7 @@ export const getLatestNews = async searchQuery => {
 };
 export const getPopularNews = async () => {
   const request = await fetch(
-    `http://hn.algolia.com/api/v1/search?&hitsPerPage=10&page=0`
+    `http://hn.algolia.com/api/v1/search?hitsPerPage=10&page=0`
   );
   return await request.json();
 };

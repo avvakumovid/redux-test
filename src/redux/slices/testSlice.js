@@ -21,7 +21,7 @@ const testSlice = createSlice({
       state.isLoading = true;
     },
     setLatestNews(state, action) {
-      state.latestNews.push(...action.payload);
+      state.latestNews = action.payload;
       state.isLoading = false;
     },
     setLatestNewsError(state, action) {
@@ -32,7 +32,7 @@ const testSlice = createSlice({
       state.isLoading = true;
     },
     setPopularNews(state, action) {
-      state.popularNews.push(...action.payload);
+      state.popularNews = action.payload;
       state.isLoading = false;
     },
     setPopularNewsError(state, action) {
